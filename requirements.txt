@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+SQLAlchemy
+alembic
+psycopg2-binary
+pydantic-settings
+python-jose[cryptography]
+passlib[bcrypt]
+redis
+
+# Тестовые зависимости
+pytest
+pytest-asyncio
+pytest-cov
+httpx
+locust
