@@ -17,3 +17,4 @@ coverage
 locust
 pytest-cov
 bcrypt
+faker
