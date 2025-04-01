@@ -2,9 +2,9 @@ from datetime import datetime, timedelta
 from typing import Optional
 from sqlalchemy.orm import Session
 from urllib.parse import urlparse, urlunparse
-from app.models import Link # убрать из импорта app
-from app.utils import generate_short_code # убрать из импорта app
-from app.config import DEFAULT_LINK_EXPIRY_DAYS # убрать из импорта app
+from app.models import Link
+from app.utils import generate_short_code
+from app.config import DEFAULT_LINK_EXPIRY_DAYS 
 
 def normalize_url(url: str) -> str:
     parsed = urlparse(url)
