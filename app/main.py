@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from app.routers import links, users #убрать из импорта app
-from app.database import Base, engine #убрать из импорта app
+from app.routers import links, users 
+from app.database import Base, engine 
 
 app = FastAPI()
 
