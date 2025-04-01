@@ -13,7 +13,7 @@
 ## Примеры запросов
 
 ### 1. Получение токена (авторизация)
-![image](results\post_token.png)
+![image](results/post_token.png)
 ```bash
 curl -X 'POST' \
   'https://shortlink-fastapi.onrender.com/token' \
