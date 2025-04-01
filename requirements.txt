@@ -1,16 +1,19 @@
+# Для приложения
 fastapi
-uvicorn[standard]
-SQLAlchemy
-alembic
-psycopg2-binary
-pydantic-settings
-python-jose[cryptography]
-passlib[bcrypt]
+uvicorn
+pydantic
 redis
-
-# Тестовые зависимости
+psycopg2-binary
+passlib
+python-jose
+sqlalchemy
+python-multipart
+dotenv
+# Для тестирования
 pytest
-pytest-asyncio
-pytest-cov
+pytest-mock
 httpx
+coverage
 locust
+pytest-cov
+bcrypt

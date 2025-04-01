@@ -1,18 +1,36 @@
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel, AnyHttpUrl
 from datetime import datetime
 from typing import Optional
 
+class UserCreate(BaseModel):
+    username: str
+    password: str
 
-class LinkBase(BaseModel): original_url: HttpUrl; custom_alias: Optional[str] = None; expires_at: Optional[datetime] = None
+class User(BaseModel):
+    id: int
+    username: str
 
-class LinkCreate(LinkBase): pass
+    class Config:
+        orm_mode = True
 
-class LinkUpdate(BaseModel): original_url: HttpUrl
+class Token(BaseModel):
+    access_token: str
+    token_type: str
 
-class LinkOut(LinkBase): short_code: str; created_at: datetime; clicks: int; last_used: Optional[datetime]
+class LinkCreate(BaseModel):
+    original_url: AnyHttpUrl
+    custom_alias: Optional[str] = None
+    expires_at: Optional[datetime] = None
 
-class UserCreate(BaseModel): email: str; password: str
+class Link(BaseModel):
+    id: int
+    original_url: str
+    short_code: str
+    created_at: datetime
+    expires_at: Optional[datetime] = None
+    last_used: Optional[datetime] = None
+    clicks: int = 0
+    user_id: Optional[int] = None
 
-class UserOut(BaseModel): id: int; email: str
-
-class Token(BaseModel): access_token: str; token_type: str
+    class Config:
+        orm_mode = True
