@@ -14,12 +14,6 @@
 
 ### 1. Получение токена (авторизация)
 ![image](results/post_token.png)
-```bash
-curl -X 'POST' \
-  'https://shortlink-fastapi.onrender.com/token' \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'username=admin&password=admin'
-```
 ### Ответ
 ```json
 {
@@ -27,10 +21,11 @@ curl -X 'POST' \
   "token_type": "bearer"
 }
 ```
+
 ### 2. Создание короткой ссылки
 ```bash
 curl -X 'POST' \
-  'https://shortlink-fastapi.onrender.com/links/' \
+  'http://127.0.0.1:8000/links/' \
   -H 'accept: application/json' \
   -H 'Authorization: Bearer <your-token>' \
   -H 'Content-Type: application/json' \
@@ -49,10 +44,11 @@ curl -X 'POST' \
   "user_id": 1
 }
 ```
+
 ### 3. Поиск ссылки по оригинальному URL
 ```bash
 curl -X 'GET' \
-  'https://shortlink-fastapi.onrender.com/links/search?original_url=https%3A%2F%2Fexample.com' \
+  'http://127.0.0.1:8000/links/search?original_url=https%3A%2F%2Fexample.com' \
   -H 'accept: application/json'
 ```
 ### Ответ
@@ -62,18 +58,19 @@ curl -X 'GET' \
     "id": 1,
     "original_url": "https://example.com",
     "short_code": "exmpl",
-    "created_at": "2025-03-17T12:00:00",
-    "expires_at": "2025-04-16T12:00:00",
+    "created_at": "2025-04-01T12:00:00",
+    "expires_at": "2025-05-01T12:00:00",
     "last_used": null,
     "clicks": 0,
     "user_id": 1
   }
 ]
 ```
+
 ### 4. Получение статистики по короткой ссылке
 ```bash
 curl -X 'GET' \
-  'https://shortlink-fastapi.onrender.com/links/stats/exmpl' \
+  'http://127.0.0.1:8000/get' \
   -H 'accept: application/json'
 ```
 ### Ответ
@@ -82,8 +79,8 @@ curl -X 'GET' \
   "original_url": "https://example.com",
   "short_code": "exmpl",
   "clicks": 0,
-  "created_at": "2025-03-17T12:00:00",
-  "expires_at": "2025-04-16T12:00:00",
+  "created_at": "2025-04-01T12:00:00",
+  "expires_at": "2025-05-01T12:00:00",
   "last_used": null
 }
 ```
